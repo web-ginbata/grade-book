@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Marks Portal">
+  <meta name="theme-color" content="#4285f4">
+  <title>Student Marks Portal</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Student Marks Portal</h1>
+    </header>
+    
+    <main id="app-content">
+      <div id="login-view" class="view">
+        <button id="google-signin" class="btn google-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo">
+          Sign in with Google
+        </button>
+      </div>
+      
+      <div id="marks-view" class="view hidden">
+        <div class="student-info">
+          <h2 id="student-name"></h2>
+          <p id="student-email"></p>
+        </div>
+        
+        <div class="marks-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Assessment</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="marks-data">
+              <!-- Filled by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="offline-status" id="offline-status"></div>
+        
+        <button id="logout-btn" class="btn">Logout</button>
+      </div>
+      
+      <div id="error-view" class="view hidden">
+        <div class="error-message">
+          <h2>Error</h2>
+          <p id="error-text"></p>
+          <button id="retry-btn" class="btn">Try Again</button>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2023 Student Portal. Works offline.</p>
+    </footer>
+  </div>
+  
+  <script src="auth.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful');
+          })
+          .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
