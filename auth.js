@@ -1,7 +1,7 @@
 // Google OAuth configuration
-const googleClientId = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
-const googleAPIKey = 'YOUR_GOOGLE_API_KEY';
-const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+const googleClientId = ${{ secrets.GOOGLE_CLIENT_ID }};
+const googleAPIKey = ${{ secrets.GOOGLE_CLIENT_SECRET }};
+const scriptURL = 'https://web-ginbata.github.io/grade-book/';
 
 // Initialize Google Auth
 function initGoogleAuth() {
